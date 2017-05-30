@@ -13,8 +13,4 @@ Metrics/MethodLength:
 
 AllCops:
   Include:
-    - lib/**/*
-  Exclude:
-    - spec/**/*
-    - done/**/*
-    - examples/**/*
+    - app/controllers/*
