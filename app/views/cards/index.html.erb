@@ -1,0 +1,20 @@
+<h1>Listing cards</h1>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+    <th>original text</th>
+    <th>translated text</th>
+    <th>date</th>
+  </tr>
+  </thead>
+  <tbody>
+  <% @cards.each do |card| %>
+    <tr>
+      <td><%= card.original_text %></td>
+      <td><%= card.translated_text %></td>
+      <td><%= formated_date(card.review_date) %></td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
