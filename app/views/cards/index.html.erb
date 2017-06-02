@@ -13,7 +13,7 @@
     <tr>
       <td><%= card.original_text %></td>
       <td><%= card.translated_text %></td>
-      <td><%= card.review_date %></td>
+      <td><%= formated_date(card.review_date) %></td>
     </tr>
   <% end %>
   </tbody>

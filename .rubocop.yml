@@ -95,7 +95,10 @@ Layout/SpaceInsideParens:
 # Check quotes usage according to lint rule below.
 Style/StringLiterals:
   Enabled: true
-  EnforcedStyle: double_quotes
+  EnforcedStyle: single_quotes
+  SupportedStyles:
+    - single_quotes
+    - double_quotes
 
 # Detect hard tabs, no hard tabs.
 Layout/Tab:
@@ -122,3 +125,10 @@ Lint/EndAlignment:
 # Use my_method(my_arg) not my_method( my_arg ) or my_method my_arg.
 Lint/RequireParentheses:
   Enabled: true
+
+Metrics/LineLength:
+  Max: 100
+
+Metrics/MethodLength:
+  CountComments: false  # count full line comments?
+  Max: 15
