@@ -13,9 +13,8 @@ class Card < ApplicationRecord
   before_create :set_review_date
   validates_with CardTextValidator
 
-  private
-
+private
   def set_review_date
-    self.review_date = Date.today+3
+    self.review_date = Date.today + 3
   end
 end
