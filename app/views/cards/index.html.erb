@@ -6,6 +6,7 @@
     <th>original text</th>
     <th>translated text</th>
     <th>date</th>
+    <th colspan="3">actions</th>
   </tr>
   </thead>
   <tbody>
@@ -14,6 +15,13 @@
       <td><%= card.original_text %></td>
       <td><%= card.translated_text %></td>
       <td><%= formated_date(card.review_date) %></td>
+      <td>
+        <%= link_to 'Show', card_path(card) %>
+        <%= link_to 'Edit', edit_card_path(card) %>
+        <%= link_to 'Destroy', card_path(card),
+              method: :delete,
+              data: { confirm: 'Are you sure?' } %>
+      </td>
     </tr>
   <% end %>
   </tbody>
