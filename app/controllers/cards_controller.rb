@@ -40,7 +40,6 @@ class CardsController < ApplicationController
   end
 
   def check
-    #@card = Card.find(params[:card_id])
     if @card.original_text?(params[:user_text])
       flash[:success] = 'Верно! Продолжай.'
       @card.up_review_date
