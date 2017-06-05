@@ -1,5 +1,5 @@
 class CardsController < ApplicationController
-  before_action :find_card, only: [:edit, :update, :show, :destroy]
+  before_action :find_card, only: [:edit, :update, :show, :destroy, :check]
 
   def index
     @cards = Card.all
@@ -40,7 +40,7 @@ class CardsController < ApplicationController
   end
 
   def check
-    @card = Card.where(original_text: params[:original_text]).take
+    #@card = Card.find(params[:card_id])
     if @card.original_text?(params[:user_text])
       flash[:success] = 'Верно! Продолжай.'
       @card.up_review_date
