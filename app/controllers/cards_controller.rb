@@ -39,6 +39,18 @@ class CardsController < ApplicationController
     redirect_to cards_path
   end
 
+  def check
+    @card = Card.where(original_text: params[:original_text]).take
+    if @card.original_text?(params[:user_text])
+      flash[:success] = 'Верно! Продолжай.'
+      @card.up_review_date
+      @card.save
+    else
+      flash[:danger] = 'Ошибочка вышла, попробуй ещё раз.'
+    end
+    redirect_to root_path
+  end
+
 private
   def card_params
     params.require(:card).permit(:original_text, :translated_text, :review_date)
