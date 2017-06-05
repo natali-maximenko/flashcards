@@ -1,5 +1,5 @@
 class CardsController < ApplicationController
-  before_action :find_card, only: [:edit, :update, :show, :destroy]
+  before_action :find_card, only: [:edit, :update, :show, :destroy, :check]
 
   def index
     @cards = Card.all
@@ -37,6 +37,17 @@ class CardsController < ApplicationController
     @card.destroy
 
     redirect_to cards_path
+  end
+
+  def check
+    if @card.original_text?(params[:user_text])
+      flash[:success] = 'Верно! Продолжай.'
+      @card.up_review_date
+      @card.save
+    else
+      flash[:danger] = 'Ошибочка вышла, попробуй ещё раз.'
+    end
+    redirect_to root_path
   end
 
 private
