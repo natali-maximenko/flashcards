@@ -7,8 +7,8 @@ class CardTextValidator < ActiveModel::Validator
 end
 
 class Card < ApplicationRecord
-  validates :original_text, presence: true, length: { minimum: 3 }
-  validates :translated_text, presence: true, length: { minimum: 3 }
+  validates :original_text, presence: true, length: { minimum: 2 }
+  validates :translated_text, presence: true, length: { minimum: 2 }
   validates :review_date, presence: true
   before_create :set_review_date
   validates_with CardTextValidator
