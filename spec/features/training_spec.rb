@@ -8,10 +8,10 @@ describe 'card review page' do
     card
   end
   let!(:haben_card) do
-     c = create(:haben_card)
-     c.review_date = 3.days.ago
-     c.save
-     c
+    c = create(:haben_card)
+    c.review_date = 3.days.ago
+    c.save
+    c
   end
   before :each do
     check_card(text)
