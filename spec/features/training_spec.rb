@@ -23,7 +23,7 @@ describe 'card review page' do
     end
 
     context 'correct word' do
-      let(:text) { Card.find(find_by_id('id', :visible => :all).value)[:original_text] }
+      let(:text) { Card.find(find_by_id('id', :visible => :all).value).original_text }
       it { expect(page).to have_content 'Верно! Продолжай.' }
     end
 
