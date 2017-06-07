@@ -1,0 +1,10 @@
+language: ruby
+rvm:
+  - 2.4.1
+services:
+  - postgresql
+before_script:
+  - cp config/database.yml.travis config/database.yml
+  - psql -c 'create database flashcards_test;' -U postgres
+addons:
+  postgresql: "9.4"
