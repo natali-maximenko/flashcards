@@ -10,9 +10,4 @@ RSpec.describe User, type: :model do
     subject { build(:user) }
     it { is_expected.to be_valid }
   end
-
-  context 'user with cards' do
-    subject(:user) { create(:user_with_cards) }
-    it { expect(user.cards).not_to be_empty }
-  end
 end
