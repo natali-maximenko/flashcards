@@ -16,6 +16,5 @@ FactoryGirl.define do
     original_text 'haben'
     translated_text 'have'
     review_date { Date.today }
-    user
   end
 end
