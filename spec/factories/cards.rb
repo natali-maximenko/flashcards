@@ -9,11 +9,13 @@ FactoryGirl.define do
     original_text 'mit'
     translated_text 'with'
     review_date { Date.today }
+    user
   end
 
   factory :haben_card, class: Card do
     original_text 'haben'
     translated_text 'have'
     review_date { Date.today }
+    user
   end
 end
