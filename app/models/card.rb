@@ -15,6 +15,8 @@ class Card < ApplicationRecord
   scope :need_review, -> { where('review_date <= ?', Date.today) }
   scope :random, -> { order('RANDOM()') }
 
+  belongs_to :user
+
   def original_text?(text)
     self.original_text.downcase.strip == text.downcase.strip
   end
