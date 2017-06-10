@@ -13,6 +13,6 @@ Card.destroy_all
 cards = trs.map do |tr|
   german = tr.xpath('td[2]').text
   english = tr.xpath('td[3]').text
-  Card.create(original_text: german, translated_text: english, review_date: 3.days.ago)
+  Card.create(original_text: german, translated_text: english, review_date: 3.days.ago, user_id: 1)
 end
 p "Created #{cards.count} cards"

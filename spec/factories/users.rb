@@ -2,6 +2,7 @@ FactoryGirl.define do
   factory :user do
     email 'test@gmail.com'
     password 'paSsWodD'
+    password_confirmation 'paSsWodD'
 
     factory :user_with_cards do
       transient do
@@ -15,7 +16,8 @@ FactoryGirl.define do
   end
 
   factory :empty_user, class: User do
-    email ''
-    password ''
+    email 'test'
+    password '12'
+    password_confirmation '21'
   end
 end
