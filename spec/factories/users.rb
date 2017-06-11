@@ -2,7 +2,7 @@ FactoryGirl.define do
   factory :user do
     email 'test@gmail.com'
     password 'paSsWodD'
-    password_confirmation 'paSsWodD'
+    password_confirmation { password }
 
     factory :user_with_cards do
       transient do
@@ -11,6 +11,7 @@ FactoryGirl.define do
 
       after(:create) do |user, evaluator|
         create_list(:card, evaluator.cards_count, user: user)
+        user.cards.update_all(review_date: 7.days.ago)
       end
     end
   end
