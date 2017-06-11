@@ -10,9 +10,10 @@ words_list_url = 'http://1000mostcommonwords.com/1000-most-common-german-words/'
 page = Nokogiri::HTML(open(words_list_url).read)
 trs = page.xpath('//*[@id="post-188"]/div/table/tbody/tr[position() > 1]')
 Card.destroy_all
+user = User.create(email: 'test@gmail.com', password: 'gfhjkm', password_confirmation: 'gfhjkm')
 cards = trs.map do |tr|
   german = tr.xpath('td[2]').text
   english = tr.xpath('td[3]').text
-  Card.create(original_text: german, translated_text: english, review_date: 3.days.ago, user_id: 1)
+  Card.create(original_text: german, translated_text: english, review_date: 3.days.ago, user: user)
 end
 p "Created #{cards.count} cards"
