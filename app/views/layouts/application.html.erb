@@ -13,6 +13,10 @@
     <div id="main-container" class="container">
       <div class="row">
         <div class="col-xs-9">
+          <div>
+            <h3><%= content_tag :span, flash[:notice], class: "label label-warning" %></h3>
+            <h3><%= content_tag :span, flash[:alert], class: "label label-danger" %></h3>
+          </div>
           <%= yield %>
         </div>
       </div>

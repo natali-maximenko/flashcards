@@ -1,19 +1,10 @@
 require 'rails_helper'
 
 describe 'card review page' do
-  let!(:card) do
-    card = create(:haben_card)
-    card.review_date = 7.days.ago
-    card.save
-    card
-  end
-  let!(:haben_card) do
-    c = create(:haben_card)
-    c.review_date = 3.days.ago
-    c.save
-    c
-  end
+  let!(:user) { create(:user_with_cards) }
+
   before :each do
+    login('test@gmail.com', 'paSsWodD')
     check_card(text)
   end
 
@@ -33,7 +24,7 @@ describe 'card review page' do
   end
 
   context 'correct word' do
-    let(:text) { 'haben' }
+    let(:text) { 'mit' }
     it { expect(page).to have_content 'Верно! Продолжай.' }
   end
 end
