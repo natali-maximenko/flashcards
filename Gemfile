@@ -23,6 +23,7 @@ gem 'simple_form'
 gem 'nokogiri'
 # auth
 gem 'sorcery'
+gem 'dotenv-rails'
 
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.2'
