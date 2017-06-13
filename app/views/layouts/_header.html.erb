@@ -19,6 +19,7 @@
           <% else %>
           <li><%= link_to "Регистрация", new_user_path %></li>
           <li><%= link_to "Войти", :login %></li>
+          <li><%= link_to 'Войти через Facebook', auth_at_provider_path(provider: :facebook) %></li>
           <% end %>
           </ul>
         <% if current_user %>
