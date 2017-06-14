@@ -7,6 +7,7 @@
     <% if @card.nil? %>
     <h3>Нечего повторять!</h3>
     <% else %>
+      <%= image_tag @card.picture.url(:thumb) %>
       <%= form_tag({controller: "cards", action: "check"}, class: "form-inline") do %>
         <%= hidden_field_tag(:id, @card.id) %>
         <%= text_field_tag(:user_text, '', class: 'form-control mb-2 mr-sm-2 mb-sm-0', placeholder: 'original text') %>

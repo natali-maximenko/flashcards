@@ -10,6 +10,7 @@ FactoryGirl.define do
     translated_text 'with'
     review_date { Date.today }
     user
+    picture { File.new("#{Rails.root}/spec/support/fixtures/ciklon.jpg") }
   end
 
   factory :haben_card, class: Card do

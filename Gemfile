@@ -24,6 +24,8 @@ gem 'nokogiri'
 # auth
 gem 'sorcery'
 gem 'dotenv-rails'
+gem 'paperclip'
+gem 'aws-sdk'
 
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.2'

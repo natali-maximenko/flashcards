@@ -17,6 +17,10 @@ class Card < ApplicationRecord
 
   belongs_to :user
 
+  has_attached_file :picture, styles: { medium: '360x360', thumb: '100x100' }, default_url: "/images/:style_picture.png", convert_options: { all: '-strip' }
+  validates_attachment :picture, presence: true, content_type: { content_type: ['image/jpeg', 'image/png'] }, size: { in: 0..500.kilobytes }
+  validates_attachment_file_name :picture, matches: [/png\z/, /jpe?g\z/]
+
   def original_text?(text)
     self.original_text.downcase.strip == text.downcase.strip
   end
