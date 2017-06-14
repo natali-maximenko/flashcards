@@ -53,6 +53,8 @@ Rails.application.configure do
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
 
   Paperclip.options[:command_path] = '/usr/bin/'
+  Paperclip::Attachment.default_options[:url] = ':s3_domain_url'
+  Paperclip::Attachment.default_options[:path] = '/:class/:attachment/:id_partition/:style/:filename'
 
   config.paperclip_defaults = {
     storage: :s3,
