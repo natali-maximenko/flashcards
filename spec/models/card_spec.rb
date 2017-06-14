@@ -25,6 +25,26 @@ RSpec.describe Card, type: :model do
     end
   end
 
+  describe 'picture' do
+    subject { create :card }
+
+    context 'card has picture' do
+      it {is_expected.to have_attached_file(:picture) }
+    end
+
+    context 'card attachment is image' do
+      it do
+        is_expected.to validate_attachment_content_type(:picture).
+                        allowing('image/png', 'image/jpeg').
+                        rejecting('text/plain', 'text/xml')
+      end
+    end
+
+    context 'card attachment size < 500 Kb' do
+      it { is_expected.to validate_attachment_size(:picture).less_than(500.kilobytes) }
+    end
+  end
+
   describe '#original_text?' do
     subject { card.original_text?(text) }
 

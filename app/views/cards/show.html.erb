@@ -8,4 +8,8 @@
   <%= @card.translated_text %>
 </p>
 
+<p>
+  <%= image_tag @card.picture.url(:medium) %>
+</p>
+
 <%= link_to 'Back', cards_path %>
