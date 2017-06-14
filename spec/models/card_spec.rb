@@ -29,7 +29,7 @@ RSpec.describe Card, type: :model do
     subject { create :card }
 
     context 'card has picture' do
-      it {is_expected.to have_attached_file(:picture) }
+      it { is_expected.to have_attached_file(:picture) }
     end
 
     context 'card attachment is image' do
