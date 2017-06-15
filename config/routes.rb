@@ -5,7 +5,9 @@ Rails.application.routes.draw do
 
   get '/', to: 'home#index', as: 'root'
   post '/check', to: 'cards#check', as: 'check'
-  resources :cards
+  resources :packs do
+    resources :cards
+  end
 
   resources :user_sessions
   resources :users

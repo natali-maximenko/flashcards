@@ -4,14 +4,13 @@ FactoryGirl.define do
     password 'paSsWodD'
     password_confirmation { password }
 
-    factory :user_with_cards do
+    factory :user_with_packs do
       transient do
-        cards_count 5
+        packs_count 3
       end
 
       after(:create) do |user, evaluator|
-        create_list(:card, evaluator.cards_count, user: user)
-        user.cards.update_all(review_date: 7.days.ago)
+        create_list(:pack_with_cards, evaluator.packs_count, user: user)
       end
     end
   end
