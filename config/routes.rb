@@ -6,11 +6,11 @@ Rails.application.routes.draw do
   get '/', to: 'home#index', as: 'root'
   post '/check', to: 'cards#check', as: 'check'
   get '/current', to: 'packs#current', as: :current
-  post '/current_pack', to: 'users#current_pack', as: :current_pack
   resources :packs do
     resources :cards
   end
 
+  post '/current_pack', to: 'users#current_pack', as: :current_pack
   resources :user_sessions
   resources :users
 
