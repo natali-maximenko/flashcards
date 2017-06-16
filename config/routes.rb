@@ -5,6 +5,8 @@ Rails.application.routes.draw do
 
   get '/', to: 'home#index', as: 'root'
   post '/check', to: 'cards#check', as: 'check'
+  get '/current', to: 'packs#current', as: :current
+  post '/set_current', to: 'packs#set_current', as: :set_current
   resources :packs do
     resources :cards
   end

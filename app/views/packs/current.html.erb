@@ -1,0 +1,12 @@
+<div class="row">
+  <div class="col-xs-6">
+    <%= simple_form_for '', { url: set_current_path, class: 'form-horizontal' } do |f| %>
+      <div class="form-group">
+        <%= f.input :pack_id, label: 'Текущая колода', collection: current_user.packs, prompt: "Выберите", selected: @current, input_html: { class: 'form-control' } %>
+      </div>
+      <div class="actions form-group">
+        <%= f.button :submit, 'Сохранить', class: 'btn btn-primary' %>
+      </div>
+    <% end %>
+  </div>
+</div>
