@@ -40,22 +40,7 @@ class PacksController < ApplicationController
   end
 
   def current
-    @current = Pack.current.empty? ? '' : Pack.current.first.id
-  end
-
-  def set_current
-    current_pack = Pack.current.empty? ? nil : Pack.current.first
-    pack = Pack.find(params[:pack_id])
-    if current_pack && pack.id != current_pack.id
-      current_pack.current = false
-      current_pack.save
-      pack.current = true
-      pack.save
-    elsif current_pack.nil? && pack
-      pack.current = true
-      pack.save
-    end
-    redirect_to packs_path
+    @current = current_user.current_pack_id
   end
 
 private

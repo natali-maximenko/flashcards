@@ -1,9 +1,9 @@
 class HomeController < ApplicationController
   def index
-    if current_user.packs.current.empty?
-      @card = current_user.cards.need_review.random.first
+    @card = if current_user.current_pack_id.nil?
+      current_user.cards.need_review.random.first
     else
-      @card = current_user.packs.current.first.cards.need_review.random.first
+      Pack.find(current_user.current_pack_id).cards.need_review.random.first
     end
   end
 end

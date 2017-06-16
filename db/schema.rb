@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170615090050) do
+ActiveRecord::Schema.define(version: 20170616181715) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -40,7 +40,6 @@ ActiveRecord::Schema.define(version: 20170615090050) do
 
   create_table "packs", force: :cascade do |t|
     t.string "name"
-    t.boolean "current"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "user_id"
@@ -53,6 +52,7 @@ ActiveRecord::Schema.define(version: 20170615090050) do
     t.datetime "updated_at", null: false
     t.string "crypted_password"
     t.string "salt"
+    t.integer "current_pack_id"
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 

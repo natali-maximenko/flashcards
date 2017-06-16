@@ -1,7 +1,6 @@
 FactoryGirl.define do
   factory :pack do
     name 'test'
-    current false
     user
 
     factory :pack_with_cards do
