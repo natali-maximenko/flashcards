@@ -14,7 +14,7 @@ class User < ApplicationRecord
 
   has_many :packs, dependent: :destroy
   has_many :cards, through: :packs, dependent: :destroy
-  belongs_to :current_pack, class_name: 'Pack', foreign_key: :current_pack_id
+  belongs_to :current_pack, class_name: 'Pack', foreign_key: :current_pack_id, required: false
   has_many :authentications, dependent: :destroy
   accepts_nested_attributes_for :authentications
 end
