@@ -1,4 +1,4 @@
-<h1>Listing cards</h1>
+<h1>Listing cards of <%= link_to @pack.name, pack_path(@pack) %></h1>
 
 <table class="table table-striped">
   <thead>
@@ -18,11 +18,8 @@
       <td><%= formated_date(card.review_date) %></td>
       <td><%= image_tag card.picture.url(:thumb) %></td>
       <td>
-        <%= link_to 'Show', card_path(card) %>
-        <%= link_to 'Edit', edit_card_path(card) %>
-        <%= link_to 'Destroy', card_path(card),
-              method: :delete,
-              data: { confirm: 'Are you sure?' } %>
+        <%= link_to 'Show', [@pack, card] %>
+        <%= link_to 'Edit', [:edit, @pack, card] %>
       </td>
     </tr>
   <% end %>

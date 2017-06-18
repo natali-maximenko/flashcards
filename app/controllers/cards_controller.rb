@@ -1,8 +1,9 @@
 class CardsController < ApplicationController
+  before_action :find_pack, only: [:new, :create, :edit, :update, :show, :destroy, :index]
   before_action :find_card, only: [:edit, :update, :show, :destroy, :check]
 
   def index
-    @cards = current_user.cards
+    @cards = @pack.cards
   end
 
   def new
@@ -10,10 +11,10 @@ class CardsController < ApplicationController
   end
 
   def create
-    @card = current_user.cards.build(card_params)
+    @card = @pack.cards.build(card_params)
 
     if @card.save
-      redirect_to cards_url
+      redirect_to pack_cards_url(@pack)
     else
       render 'new'
     end
@@ -24,7 +25,7 @@ class CardsController < ApplicationController
 
   def update
     if @card.update(card_params)
-      redirect_to cards_url
+      redirect_to pack_cards_url(@pack)
     else
       render 'edit'
     end
@@ -36,7 +37,7 @@ class CardsController < ApplicationController
   def destroy
     @card.destroy
 
-    redirect_to cards_path
+    redirect_to pack_cards_url(@pack)
   end
 
   def check
@@ -56,6 +57,10 @@ private
   end
 
   def find_card
-    @card = current_user.cards.find(params[:id])
+    @card = Card.find(params[:id])
+  end
+
+  def find_pack
+    @pack = current_user.packs.find(params[:pack_id])
   end
 end

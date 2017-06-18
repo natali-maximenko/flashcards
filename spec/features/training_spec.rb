@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 describe 'card review page' do
-  let!(:user) { create(:user_with_cards) }
+  let!(:user) { create(:user_with_packs) }
 
   before :each do
     login('test@gmail.com', 'paSsWodD')

@@ -1,4 +1,9 @@
 <p>
+  <strong>Колода:</strong>
+  <%= @pack.name %>
+</p>
+
+<p>
   <strong>Original text:</strong>
   <%= @card.original_text %>
 </p>
@@ -12,4 +17,4 @@
   <%= image_tag @card.picture.url(:medium) %>
 </p>
 
-<%= link_to 'Back', cards_path %>
+<%= link_to 'Back', pack_cards_url(@pack) %>

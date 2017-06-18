@@ -11,7 +11,7 @@ describe 'Accessing user' do
   end
 
   it 'does not show user menu' do
-    expect(page).not_to have_content 'Мои карточки'
+    expect(page).not_to have_content 'Мои колоды'
   end
 
   it 'show registration button' do
@@ -28,7 +28,7 @@ describe 'Accessing user' do
     end
 
     it 'show user menu' do
-      expect(page).to have_content 'Добавить карточку'
+      expect(page).to have_content 'Добавить колоду'
     end
 
     it 'does not show login link' do

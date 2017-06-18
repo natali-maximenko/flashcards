@@ -9,7 +9,7 @@ FactoryGirl.define do
     original_text 'mit'
     translated_text 'with'
     review_date { Date.today }
-    user
+    pack
     picture { File.new("#{Rails.root}/spec/support/fixtures/ciklon.jpg") }
   end
 
@@ -17,6 +17,6 @@ FactoryGirl.define do
     original_text 'haben'
     translated_text 'have'
     review_date { Date.today }
-    user
+    pack
   end
 end

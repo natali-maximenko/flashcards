@@ -5,8 +5,12 @@ Rails.application.routes.draw do
 
   get '/', to: 'home#index', as: 'root'
   post '/check', to: 'cards#check', as: 'check'
-  resources :cards
+  get '/current', to: 'packs#current', as: :current
+  resources :packs do
+    resources :cards
+  end
 
+  post '/current_pack', to: 'users#current_pack', as: :current_pack
   resources :user_sessions
   resources :users
 

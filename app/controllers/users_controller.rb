@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  skip_before_action :require_login, only: [:index, :new, :create]
+  skip_before_action :require_login, only: [:index, :new, :create, :current_pack]
   before_action :user, only: [:show, :edit, :update, :destroy]
 
   def index
@@ -36,6 +36,14 @@ class UsersController < ApplicationController
   def destroy
     @user.destroy
     redirect_to root_path
+  end
+
+  def current_pack
+    if current_user.update(current_pack_id: params[:pack_id])
+      redirect_to packs_path
+    else
+      redirect_to(:current)
+    end
   end
 
 private

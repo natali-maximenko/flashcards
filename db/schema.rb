@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170614080020) do
+ActiveRecord::Schema.define(version: 20170616181715) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -30,12 +30,20 @@ ActiveRecord::Schema.define(version: 20170614080020) do
     t.date "review_date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "user_id"
     t.string "picture_file_name"
     t.string "picture_content_type"
     t.integer "picture_file_size"
     t.datetime "picture_updated_at"
-    t.index ["user_id"], name: "index_cards_on_user_id"
+    t.bigint "pack_id"
+    t.index ["pack_id"], name: "index_cards_on_pack_id"
+  end
+
+  create_table "packs", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "user_id"
+    t.index ["user_id"], name: "index_packs_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -44,8 +52,10 @@ ActiveRecord::Schema.define(version: 20170614080020) do
     t.datetime "updated_at", null: false
     t.string "crypted_password"
     t.string "salt"
+    t.integer "current_pack_id"
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 
-  add_foreign_key "cards", "users"
+  add_foreign_key "cards", "packs"
+  add_foreign_key "packs", "users"
 end

@@ -1,0 +1,24 @@
+<h1>Карточки в колоде <%= @pack.name %></h1>
+
+<p><%= link_to 'Добавить карточки в колоду', new_pack_card_path(@pack) %></p>
+<p><%= link_to 'Карточки из колоды', pack_cards_path(@pack) %></p>
+<table class="table table-striped">
+  <thead>
+    <tr>
+    <th>карточка</th>
+    <th colspan="3">actions</th>
+  </tr>
+  </thead>
+  <tbody>
+  <% @pack.cards.each do |card| %>
+    <tr>
+      <td><%= card.original_text %>-<%= card.translated_text %></td>
+      <td>
+        <%= link_to 'Destroy', pack_card_path(@pack, card),
+              method: :delete,
+              data: { confirm: 'Are you sure?' } %>
+      </td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
