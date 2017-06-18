@@ -39,11 +39,10 @@ class UsersController < ApplicationController
   end
 
   def current_pack
-    user = User.find(current_user.id)
-    if user.update(current_pack_id: params[:pack_id])
+    if current_user.update(current_pack_id: params[:pack_id])
       redirect_to packs_path
     else
-      redirect_to(:current, notice: user.errors.messages)
+      redirect_to(:current)
     end
   end
 
