@@ -1,4 +1,4 @@
-<h1>Listing cards of <%= link_to @pack.name, pack_path(@pack) %></h1>
+<h3>Listing cards</h3>
 
 <table class="table table-striped">
   <thead>
@@ -25,3 +25,8 @@
   <% end %>
   </tbody>
 </table>
+<% content_for :sidebar do %>
+  <div class="list-group">
+    <%= link_to "Вернуться в колоду: #{@pack.name}", pack_path(@pack), class: 'list-group-item' %>
+  </div>
+<% end %>

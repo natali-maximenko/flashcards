@@ -1,6 +1,5 @@
 <h1>Мои колоды</h1>
 
-<%= link_to 'Выбрать текущую колоду', current_path %>
 <table class="table table-striped">
   <thead>
     <tr>
@@ -29,3 +28,8 @@
   <% end %>
   </tbody>
 </table>
+<% content_for :sidebar do %>
+  <div class="list-group">
+    <%= link_to 'Выбрать текущую колоду', current_path, class: 'list-group-item' %>
+  </div>
+<% end %>
