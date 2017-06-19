@@ -1,7 +1,4 @@
-<h1>Карточки в колоде <%= @pack.name %></h1>
-
-<p><%= link_to 'Добавить карточки в колоду', new_pack_card_path(@pack) %></p>
-<p><%= link_to 'Карточки из колоды', pack_cards_path(@pack) %></p>
+<h3>Карточки в колоде <%= @pack.name %></h3>
 <table class="table table-striped">
   <thead>
     <tr>
@@ -22,3 +19,10 @@
   <% end %>
   </tbody>
 </table>
+<% content_for :sidebar do %>
+  <div class="list-group">
+      <%= link_to 'Добавить карточки в колоду', new_pack_card_path(@pack), class: 'list-group-item' %>
+      <%= link_to 'Карточки из колоды', pack_cards_path(@pack), class: 'list-group-item' %>
+  </div>
+<% end %>
+
