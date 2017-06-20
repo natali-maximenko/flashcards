@@ -7,6 +7,8 @@
     <th>translated text</th>
     <th>date</th>
     <th>picture</th>
+    <th>reviews</th>
+    <th>fails</th>
     <th colspan="3">actions</th>
   </tr>
   </thead>
@@ -17,6 +19,8 @@
       <td><%= card.translated_text %></td>
       <td><%= formated_date(card.review_date) %></td>
       <td><%= image_tag card.picture.url(:thumb) %></td>
+      <td><%= card.review_count %></td>
+      <td><%= card.fail_count %></td>
       <td>
         <%= link_to 'Show', [@pack, card] %>
         <%= link_to 'Edit', [:edit, @pack, card] %>
