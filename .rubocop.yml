@@ -126,7 +126,7 @@ Lint/RequireParentheses:
   Enabled: true
 
 Metrics/LineLength:
-  Max: 100
+  Max: 110
 
 Metrics/MethodLength:
   CountComments: false  # count full line comments?
