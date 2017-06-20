@@ -43,11 +43,12 @@ class CardsController < ApplicationController
   def check
     if @card.original_text?(params[:user_text])
       flash[:success] = 'Верно! Продолжай.'
-      @card.up_review_date
-      @card.save
+      @card.checked(true)
     else
       flash[:danger] = 'Ошибочка вышла, попробуй ещё раз.'
+      @card.checked(false)
     end
+    @card.save
     redirect_to root_path
   end
 

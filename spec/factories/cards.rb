@@ -8,7 +8,7 @@ FactoryGirl.define do
   factory :card do
     original_text 'mit'
     translated_text 'with'
-    review_date { Date.today }
+    review_date { 2.days.ago }
     pack
     picture { File.new("#{Rails.root}/spec/support/fixtures/ciklon.jpg") }
   end
