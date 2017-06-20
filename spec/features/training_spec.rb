@@ -27,4 +27,9 @@ describe 'card review page' do
     let(:text) { 'mit' }
     it { expect(page).to have_content 'Верно! Продолжай.' }
   end
+
+  context 'misprint' do
+    let(:text) { 'mti' }
+    it { expect(page).to have_content 'Опечатка. Правильно так: mit, а ввели mti.' }
+  end
 end

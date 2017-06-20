@@ -44,6 +44,9 @@ class CardsController < ApplicationController
     if @card.original_text?(params[:user_text])
       flash[:success] = 'Верно! Продолжай.'
       @card.checked(true)
+    elsif @card.text_distance(params[:user_text]) == 1
+      flash[:warning] = "Опечатка. Правильно так: #{@card.original_text}, а ввели #{params[:user_text]}."
+      @card.checked(true)
     else
       flash[:danger] = 'Ошибочка вышла, попробуй ещё раз.'
       @card.checked(false)
