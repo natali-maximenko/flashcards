@@ -17,4 +17,10 @@ class User < ApplicationRecord
   belongs_to :current_pack, class_name: 'Pack', foreign_key: :current_pack_id, required: false
   has_many :authentications, dependent: :destroy
   accepts_nested_attributes_for :authentications
+
+  def self.notify_cards_need_review
+    User.joins(:cards).where('review_date <= ?', Time.now) do |user|
+      CardsMailer.pending_cards_notification(user).deliver_now
+    end
+  end
 end
