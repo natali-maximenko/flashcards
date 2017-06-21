@@ -15,18 +15,25 @@ class Card < ApplicationRecord
   validates :review_date, presence: true
   before_create :set_review_date
   validates_with CardTextValidator
-  scope :need_review, -> { where('review_date <= ?', Date.today) }
+  scope :need_review, -> { where('review_date <= ?', Time.now) }
   scope :random, -> { order('RANDOM()') }
 
   belongs_to :pack
 
-  has_attached_file :picture, styles: { medium: '360x360', thumb: '100x100' }, default_url: "/images/:style_picture.png", convert_options: { all: '-strip' }
-  validates_attachment :picture, presence: true, content_type: { content_type: ['image/jpeg', 'image/png'] }, size: { in: 0..500.kilobytes }
+  has_attached_file :picture, styles: { medium: '360x360', thumb: '100x100' },
+                              default_url: "/images/:style_picture.png",
+                              convert_options: { all: '-strip' }
+  validates_attachment :picture, presence: true, size: { in: 0..500.kilobytes }
+  validates_attachment_content_type :picture, content_type: ['image/jpeg', 'image/png']
   validates_attachment_file_name :picture, matches: [/png\z/, /jpe?g\z/]
 
   # compare text with original_text of card
   def original_text?(text)
     self.original_text.downcase.strip == text.downcase.strip
+  end
+
+  def text_distance(text)
+    DamerauLevenshtein.distance(self.original_text.downcase.strip, text.downcase.strip)
   end
 
   # when card checked, need to update counters and review_date

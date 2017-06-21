@@ -72,6 +72,22 @@ RSpec.describe Card, type: :model do
     end
   end
 
+  describe '#text_distance' do
+    subject { card.text_distance(text) }
+
+    context 'when text is correct' do
+      let(:card) { build :card }
+      let(:text) { 'mit' }
+      it { is_expected.to eq(0) }
+    end
+
+    context 'when misprint' do
+      let(:card) { build :card }
+      let(:text) { 'mti' }
+      it { is_expected.to eq(1) }
+    end
+  end
+
   describe '#checked' do
     subject(:card) { create :card }
     before do
