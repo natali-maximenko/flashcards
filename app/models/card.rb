@@ -20,8 +20,11 @@ class Card < ApplicationRecord
 
   belongs_to :pack
 
-  has_attached_file :picture, styles: { medium: '360x360', thumb: '100x100' }, default_url: "/images/:style_picture.png", convert_options: { all: '-strip' }
-  validates_attachment :picture, presence: true, content_type: { content_type: ['image/jpeg', 'image/png'] }, size: { in: 0..500.kilobytes }
+  has_attached_file :picture, styles: { medium: '360x360', thumb: '100x100' },
+                              default_url: "/images/:style_picture.png",
+                              convert_options: { all: '-strip' }
+  validates_attachment :picture, presence: true, size: { in: 0..500.kilobytes }
+  validates_attachment_content_type :picture, content_type: ['image/jpeg', 'image/png']
   validates_attachment_file_name :picture, matches: [/png\z/, /jpe?g\z/]
 
   # compare text with original_text of card
