@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170620083728) do
+ActiveRecord::Schema.define(version: 20170622112441) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -55,6 +55,7 @@ ActiveRecord::Schema.define(version: 20170620083728) do
     t.string "crypted_password"
     t.string "salt"
     t.integer "current_pack_id"
+    t.string "locale"
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 

@@ -6,7 +6,20 @@ class ApplicationController < ActionController::Base
 private
 
   def set_locale
-    I18n.locale = params[:locale] || I18n.default_locale
+    session[:locale] = locale.to_sym if locale && I18n.available_locales.include?(locale.to_sym)
+    I18n.locale = session[:locale] || I18n.default_locale
+  end
+
+  def locale
+    if current_user
+      current_user.locale
+    elsif params[:locale]
+      params[:locale]
+    elsif session[:locale]
+      session[:locale]
+    else
+      http_accept_language.compatible_language_from(I18n.available_locales)
+    end
   end
 
   def not_authenticated

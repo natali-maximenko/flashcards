@@ -28,6 +28,7 @@ gem 'paperclip'
 gem 'aws-sdk'
 gem 'damerau-levenshtein'
 gem 'whenever', require: false
+gem 'http_accept_language'
 
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.2'

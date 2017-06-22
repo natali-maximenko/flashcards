@@ -1,9 +1,13 @@
+# To learn more, please read the Rails Internationalization guide
+# available at http://guides.rubyonrails.org/i18n.html.
+
 ru:
   hello: 'Привет мир'
   need_login: 'Нужно залогиться'
   brand: 'Флэшкарточкер'
   edit_profile: 'Редактировать профиль'
   logout: 'Выйти'
+  review: 'Тест'
   my_packs: 'Мои колоды'
   add_pack: 'Добавить колоду'
   signup: 'Регистрация'
@@ -76,8 +80,15 @@ ru:
     form:
       password_confirmation: 'Ещё раз пароль'
       sigup: 'Зарегистрироваться'
+      locale: 'Язык интерфейса'
   oauths:
     callback:
       success: "Вы успешно вошли через %{provider}"
       fail: "Не получилось войти через %{provider}!"
+  user_sessions:
+    create:
+      success: 'Вы вошли'
+      fail: 'Не удалось войти'
+    destroy:
+      msg: 'Вы вышли'
 
