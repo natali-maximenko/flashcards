@@ -1,8 +1,8 @@
 <%= simple_form_for @pack, html: { class: 'form-signin' } do |f| %>
   <div class="form-group">
-    <%= f.input :name, label: 'Название', input_html: { class: 'form-control' } %>
+    <%= f.input :name, label: t('.name'), input_html: { class: 'form-control' } %>
   </div>
   <div class="actions form-group">
-    <%= f.button :submit, @pack.new_record? ? 'Создать' : 'Сохранить', class: 'btn btn-lg btn-primary btn-block' %>
+    <%= f.button :submit, @pack.new_record? ? t('create') : t('save'), class: 'btn btn-lg btn-primary btn-block' %>
   </div>
 <% end %>

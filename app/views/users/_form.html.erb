@@ -1,15 +1,15 @@
 <%= simple_form_for @user, html: { class: 'form-signin' } do |f| %>
   <div class="form-group">
-    <%= f.input :email, as: :email, label: 'Email', input_html: { class: 'form-control' } %>
+    <%= f.input :email, as: :email, label: t('email'), input_html: { class: 'form-control' } %>
   </div>
   <div class="form-group">
-    <%= f.input :password, as: :password, label: 'Пароль', input_html: { class: 'form-control' } %>
+    <%= f.input :password, as: :password, label: t('password'), input_html: { class: 'form-control' } %>
   </div>
   <div class="form-group">
-   <%= f.input :password_confirmation, as: :password, label: 'Ещё раз пароль', input_html: { class: 'form-control' } %>
+   <%= f.input :password_confirmation, as: :password, label: t('.password_confirmation'), input_html: { class: 'form-control' } %>
   </div>
   <div class="actions form-group">
-    <%= f.button :submit, @user.new_record? ? 'Зарегистрироваться' : 'Изменить', class: 'btn btn-lg btn-primary btn-block' %>
+    <%= f.button :submit, @user.new_record? ? t('.signup') : t('save'), class: 'btn btn-lg btn-primary btn-block' %>
   </div>
 <% end %>
 

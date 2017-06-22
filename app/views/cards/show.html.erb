@@ -1,15 +1,15 @@
 <p>
-  <strong>Колода:</strong>
+  <strong><%= t 'pack' %>:</strong>
   <%= @pack.name %>
 </p>
 
 <p>
-  <strong>Original text:</strong>
+  <strong><%= t 'original_text' %>:</strong>
   <%= @card.original_text %>
 </p>
 
 <p>
-  <strong>Translated text:</strong>
+  <strong><%= t 'translated_text' %>:</strong>
   <%= @card.translated_text %>
 </p>
 
@@ -17,4 +17,4 @@
   <%= image_tag @card.picture.url(:medium) %>
 </p>
 
-<%= link_to 'Back', pack_cards_url(@pack) %>
+<%= link_to t('back'), pack_cards_url(@pack) %>

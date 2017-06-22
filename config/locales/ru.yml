@@ -1,0 +1,83 @@
+ru:
+  hello: 'Привет мир'
+  need_login: 'Нужно залогиться'
+  brand: 'Флэшкарточкер'
+  edit_profile: 'Редактировать профиль'
+  logout: 'Выйти'
+  my_packs: 'Мои колоды'
+  add_pack: 'Добавить колоду'
+  signup: 'Регистрация'
+  login: 'Войти'
+  login_fb: 'Войти через Facebook'
+  create: 'Создать'
+  show: 'Просмотр'
+  edit: 'Изменить'
+  save: 'Сохранить'
+  destroy: 'Удалить'
+  back: 'Назад'
+  actions: 'действия'
+  comfirm: 'Вы уверены?'
+  original_text: 'оригинал'
+  translated_text: 'перевод'
+  review_date: 'дата проверки'
+  picture: 'картинка'
+  pack: 'колода'
+  return_to_pack: "Вернуться в колоду: %{pack}"
+  select: 'Выберите'
+  email: 'Email'
+  password: 'Пароль'
+  home:
+    index:
+      description: 'Первый в мире удобный менеджер флеш-карточек. Именно так.'
+      no_cards: 'Нечего повторять!'
+      check: 'Проверить!'
+  cards:
+    index:
+      header: 'Список карточек'
+      reviews: 'кол-во проверок'
+      fails: 'кол-во ошибок'
+      actions: 'действия'
+    new:
+      header: 'Новая карточка'
+    edit:
+      header: 'Редактирование карточки'
+    check:
+      success: 'Верно! Продолжай.'
+      misprint: "Опечатка. Правильно так: %{original_text}, а ввели %{user_text}."
+      fail: 'Ошибочка вышла, попробуй ещё раз.'
+  packs:
+    index:
+      header: 'Мои колоды'
+      name: 'название'
+      cards: 'карточек'
+      current: 'текущая'
+      set_current: 'Выбрать текущую колоду'
+      add_pack: 'Добавить колоду'
+    show:
+      header: 'Карточки в колоде'
+      card: 'карточка'
+      add_cards: 'Добавить карточки в колоду'
+      cards_list: 'Карточки из колоды'
+    new:
+      header: 'Добавить колоду'
+    edit:
+      header: 'Изменить колоду'
+    form:
+      name: 'Название'
+    current:
+      pack: 'Текущая колода'
+  users:
+    new:
+      header: 'Зарегистрироваться'
+    edit:
+      header: 'Изменить свои данные'
+    index:
+      header: 'Добро пожаловать!'
+    form:
+      password_confirmation: 'Ещё раз пароль'
+      sigup: 'Зарегистрироваться'
+  oauths:
+    callback:
+      success: "Вы успешно вошли через %{provider}"
+      fail: "Не получилось войти через %{provider}!"
+

@@ -42,13 +42,13 @@ class CardsController < ApplicationController
 
   def check
     if @card.original_text?(params[:user_text])
-      flash[:success] = 'Верно! Продолжай.'
+      flash[:success] = t('.success')
       @card.checked(true)
     elsif @card.text_distance(params[:user_text]) == 1
-      flash[:warning] = "Опечатка. Правильно так: #{@card.original_text}, а ввели #{params[:user_text]}."
+      flash[:warning] = t('.misprint', original_text: @card.original_text, user_text: params[:user_text])
       @card.checked(true)
     else
-      flash[:danger] = 'Ошибочка вышла, попробуй ещё раз.'
+      flash[:danger] = t('.fail')
       @card.checked(false)
     end
     @card.save
