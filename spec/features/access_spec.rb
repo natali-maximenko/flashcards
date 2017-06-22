@@ -7,7 +7,7 @@ describe 'Accessing user' do
   end
 
   it 'redirect to login' do
-    expect(page).to have_content 'Please login first'
+    expect(page).to have_content 'Нужно залогиться'
   end
 
   it 'does not show user menu' do

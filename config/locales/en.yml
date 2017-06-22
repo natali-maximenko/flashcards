@@ -1,33 +1,93 @@
-# Files in the config/locales directory are used for internationalization
-# and are automatically loaded by Rails. If you want to use locales other
-# than English, add the necessary files in this directory.
-#
-# To use the locales, use `I18n.t`:
-#
-#     I18n.t 'hello'
-#
-# In views, this is aliased to just `t`:
-#
-#     <%= t('hello') %>
-#
-# To use a different locale, set it with `I18n.locale`:
-#
-#     I18n.locale = :es
-#
-# This would use the information in config/locales/es.yml.
-#
-# The following keys must be escaped otherwise they will not be retrieved by
-# the default I18n backend:
-#
-# true, false, on, off, yes, no
-#
-# Instead, surround them with single quotes.
-#
-# en:
-#   'true': 'foo'
-#
 # To learn more, please read the Rails Internationalization guide
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  hello: 'Hello world'
+  need_login: 'Please login first'
+  brand: 'Flashcards'
+  edit_profile: 'Edit profile'
+  logout: 'Logout'
+  review: 'Review'
+  my_packs: 'My packs'
+  add_pack: 'Add pack'
+  signup: 'Sign up'
+  login: 'Login'
+  login_fb: 'Login via Facebook'
+  create: 'Create'
+  show: 'Show'
+  edit: 'Edit'
+  save: 'Save'
+  destroy: 'Destroy'
+  back: 'Back'
+  actions: 'actions'
+  confirm: 'Are you sure?'
+  original_text: 'original text'
+  translated_text: 'translated text'
+  review_date: 'review date'
+  picture: 'picture'
+  pack: 'pack'
+  return_to_pack: "Return to pack: %{pack}"
+  select: 'Select'
+  email: 'Email'
+  password: 'Password'
+  home:
+    index:
+      description: 'First in the worlds usable flashcards manager.'
+      no_cards: 'No cards to review'
+      check: 'Check it'
+  cards:
+    index:
+      header: 'Listing cards'
+      reviews: 'reviews'
+      fails: 'fails'
+      actions: 'actions'
+    new:
+      header: 'New card'
+    edit:
+      header: 'Editing card'
+    check:
+      success: 'Right! Go on.'
+      misprint: "Misprint. Original text was: %{original_text}, and you type %{user_text}."
+      fail: 'Errors happen try again.'
+  packs:
+    index:
+      header: 'My packs'
+      name: 'name'
+      cards: 'cards count'
+      current: 'current'
+      set_current: 'Set current pack'
+      add_pack: 'Add pack'
+    show:
+      header: 'Cards in pack'
+      card: 'card'
+      add_cards: 'Add cards in pack'
+      cards_list: 'Cards list'
+    new:
+      header: 'Add pack'
+    edit:
+      header: 'Edit pack'
+    form:
+      name: 'Title'
+    current:
+      pack: 'Current pack'
+  users:
+    new:
+      header: 'Sign up'
+    edit:
+      header: 'Edit profile'
+    index:
+      header: 'Welcome!'
+    form:
+      password_confirmation: 'Password one more time'
+      signup: 'Sign up'
+      locale: 'Language'
+  oauths:
+    callback:
+      success: "Logged in from %{provider}"
+      fail: "Failed to login from %{provider}!"
+  user_sessions:
+    create:
+      success: 'Login successful'
+      fail: 'Login failed'
+    destroy:
+      msg: 'Logged out!'
