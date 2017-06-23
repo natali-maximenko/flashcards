@@ -4,7 +4,7 @@ class SuperMemoTutor
   CORRECT_RESPONSE = :corrent
   INCORRECT_RESPONSE = :incorrent
 
-  def initialize(card, review_status, response_time)
+  def initialize(card, review_status, response_time = 0)
     @card = card
     @status = review_status
     @time = response_time

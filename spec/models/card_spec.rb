@@ -114,7 +114,7 @@ RSpec.describe Card, type: :model do
     context 'second review checked after 2 fails' do
       before do
         card.update(review_count: 2, fail_count: 2)
-        SuperMemoTutor.new(card, :corrent).recalculate
+        SuperMemoTutor.new(card, :corrent, 30).recalculate
       end
 
       it { expect(card).to have_attributes(review_count: 3, fail_count: 0) }
