@@ -4,9 +4,10 @@ class SuperMemoTutor
   CORRECT_RESPONSE = :corrent
   INCORRECT_RESPONSE = :incorrent
 
-  def initialize(card, review_status)
+  def initialize(card, review_status, response_time)
     @card = card
     @status = review_status
+    @time = response_time
   end
 
   def recalculate
@@ -65,13 +66,13 @@ private
       0
     elsif @card.fail_count < REVIEW_FAILS_LIMIT
       1
-    elsif @status == CORRECT_RESPONSE && @card.fail_count <= 1
+    elsif @status == CORRECT_RESPONSE && @time <= 60
       2
-    elsif @status == CORRECT_RESPONSE && @card.fail_count == 0
+    elsif @status == CORRECT_RESPONSE && @time <= 30
       3
-    elsif @status == PERFECT_RESPONSE && @card.fail_count <= 1
+    elsif @status == PERFECT_RESPONSE && @time <= 60
       4
-    elsif @status == PERFECT_RESPONSE && @card.fail_count == 0
+    elsif @status == PERFECT_RESPONSE && @card.fail_count <= 1 && @time <= 30
       5
     end
   end
