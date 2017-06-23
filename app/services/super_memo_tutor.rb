@@ -24,7 +24,7 @@ private
   end
 
   def update_counters
-    unless @status == INCORRECT_RESPONSE
+    if @status == PERFECT_RESPONSE || @status == CORRECT_RESPONSE
       @card.review_count += 1
       @card.fail_count = 0
     else
