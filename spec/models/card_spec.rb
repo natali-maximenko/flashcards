@@ -88,7 +88,7 @@ RSpec.describe Card, type: :model do
     end
   end
 
-  describe '#checked' do
+  describe 'SuperMemoTutor' do
     subject(:card) { create :card }
     before do
       date = Date.today
@@ -99,25 +99,25 @@ RSpec.describe Card, type: :model do
     context 'second review fails first time' do
       before { card.update(review_count: 2) }
 
-      it { expect{ card.checked(false) }.to change(card, :fail_count).from(0).to(1) }
+      it { expect{ SuperMemoTutor.new(card, :incorrect).recalculate }.to change(card, :fail_count).from(0).to(1) }
     end
 
     context 'second review fails 3 times' do
       before do
         card.update(review_count: 2, fail_count: 2)
-        card.checked(false)
+        SuperMemoTutor.new(card, :incorrect).recalculate
       end
 
-      it { expect(card).to have_attributes(review_count: 1, fail_count: 0, review_date: Time.now + 12.hours) }
+      it { expect(card).to have_attributes(review_count: 1, fail_count: 0, review_date: Time.now) }
     end
 
     context 'second review checked after 2 fails' do
       before do
         card.update(review_count: 2, fail_count: 2)
-        card.checked(true)
+        SuperMemoTutor.new(card, :corrent).recalculate
       end
 
-      it { expect(card).to have_attributes(review_count: 3, fail_count: 0, review_date: Time.now + 7.days) }
+      it { expect(card).to have_attributes(review_count: 3, fail_count: 0) }
     end
   end
 end
