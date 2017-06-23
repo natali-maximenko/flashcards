@@ -38,34 +38,4 @@ class Card < ApplicationRecord
   def set_review_date
     self.review_date = Time.now
   end
-
-  # when card checked, need to update counters and review_date
-  # @param status [bool] checked or not
-  # def checked(status)
-  #   if status
-  #     self.review_count += 1
-  #     self.fail_count = 0
-  #   else
-  #     self.fail_count += 1
-  #     #check_fails
-  #   end
-  # end
-
-private
-  # def check_fails
-  #   clean_card if self.fail_count == REVIEW_FAILS_LIMIT
-  # end
-
-  # # when many fails, return card to first review state
-  # def clean_card
-  #   self.fail_count = 0
-  #   self.review_count = 1
-  #   up_review_date
-  # end
-
-  # def up_review_date
-  #   self.review_date = Time.now + REVIEW_INTERVALS[self.review_count]
-  # end
-
-
 end
