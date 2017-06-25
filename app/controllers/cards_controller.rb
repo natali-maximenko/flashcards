@@ -41,17 +41,21 @@ class CardsController < ApplicationController
   end
 
   def check
-    if @card.original_text?(params[:user_text])
-      flash[:success] = t('.success')
-      checked = SuperMemoTutor::PERFECT_RESPONSE
-    elsif @card.text_distance(params[:user_text]) == 1
-      flash[:warning] = t('.misprint', original_text: @card.original_text, user_text: params[:user_text])
-      checked = SuperMemoTutor::CORRECT_RESPONSE
-    else
-      flash[:danger] = t('.fail')
-      checked = SuperMemoTutor::INCORRECT_RESPONSE
-    end
-    SuperMemoTutor.new(@card, checked, params[:response_time]).recalculate
+    checked = if @card.original_text?(params[:user_text])
+                flash[:success] = t('.success')
+                SuperMemoTutor::PERFECT_RESPONSE
+              elsif @card.text_distance(params[:user_text]) == 1
+                flash[:warning] = t('.misprint',
+                                    original_text: @card.original_text,
+                                    user_text: params[:user_text])
+                SuperMemoTutor::CORRECT_RESPONSE
+              else
+                flash[:danger] = t('.fail')
+                SuperMemoTutor::INCORRECT_RESPONSE
+              end
+    SuperMemoTutor.new(card: @card,
+                       review_status: checked,
+                       response_time: params[:response_time]).update_card
     redirect_to root_path
   end
 

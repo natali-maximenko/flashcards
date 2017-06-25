@@ -89,7 +89,7 @@ RSpec.describe Card, type: :model do
   end
 
   describe 'SuperMemoTutor' do
-    subject(:card) { create :card }
+    subject(:card) { create(:card, fail_count: 0) }
     before do
       date = Date.today
       time = Time.local(date.year, date.month, date.day, 10, 0, 0)
@@ -99,13 +99,14 @@ RSpec.describe Card, type: :model do
     context 'second review fails first time' do
       before { card.update(review_count: 2) }
 
-      it { expect{ SuperMemoTutor.new(card, :incorrect).recalculate }.to change(card, :fail_count).from(0).to(1) }
+      it { expect{ SuperMemoTutor.new(card: card, review_status: SuperMemoTutor::INCORRECT_RESPONSE).update_card }.to change(card, :fail_count).from(0).to(1) }
     end
 
     context 'second review fails 3 times' do
       before do
         card.update(review_count: 2, fail_count: 2)
-        SuperMemoTutor.new(card, :incorrect).recalculate
+        SuperMemoTutor.new(card: card, review_status: SuperMemoTutor::INCORRECT_RESPONSE)
+          .update_card
       end
 
       it { expect(card).to have_attributes(review_count: 1, fail_count: 0, review_date: Time.now) }
@@ -114,7 +115,8 @@ RSpec.describe Card, type: :model do
     context 'second review checked after 2 fails' do
       before do
         card.update(review_count: 2, fail_count: 2)
-        SuperMemoTutor.new(card, :corrent, 30).recalculate
+        SuperMemoTutor.new(card: card, review_status: SuperMemoTutor::CORRECT_RESPONSE, response_time: 30)
+          .update_card
       end
 
       it { expect(card).to have_attributes(review_count: 3, fail_count: 0) }

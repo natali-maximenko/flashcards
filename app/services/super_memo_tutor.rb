@@ -1,19 +1,31 @@
 class SuperMemoTutor
+  attr_reader :card, :status, :time
   REVIEW_FAILS_LIMIT = 3
   PERFECT_RESPONSE = :perfect
   CORRECT_RESPONSE = :corrent
   INCORRECT_RESPONSE = :incorrent
 
-  def initialize(card, review_status, response_time = 0)
+  def initialize(card:, review_status:, response_time: 0)
+    raise ArgumentError, 'is not a Card object' unless card.is_a? Card
     @card = card
+    raise ArgumentError, 'unknown status' unless allowed_status?(review_status)
     @status = review_status
     @time = response_time
   end
 
-  def recalculate
-    up_review_date unless @status == INCORRECT_RESPONSE
+  def update_card
     update_counters
+    up_review_date unless @status == INCORRECT_RESPONSE
+    check_fails
     @card.save
+  end
+
+  def allowed_status?(status)
+    [PERFECT_RESPONSE, CORRECT_RESPONSE, INCORRECT_RESPONSE].include?(status)
+  end
+
+  def correct_status?(status)
+    [PERFECT_RESPONSE, CORRECT_RESPONSE].include?(status)
   end
 
 private
@@ -25,12 +37,11 @@ private
   end
 
   def update_counters
-    if @status == PERFECT_RESPONSE || @status == CORRECT_RESPONSE
+    if correct_status?(@status)
       @card.review_count += 1
       @card.fail_count = 0
     else
       @card.fail_count += 1
-      check_fails
     end
   end
 
