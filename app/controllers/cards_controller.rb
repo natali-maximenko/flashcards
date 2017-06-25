@@ -51,7 +51,7 @@ class CardsController < ApplicationController
       flash[:danger] = t('.fail')
       checked = SuperMemoTutor::INCORRECT_RESPONSE
     end
-    SuperMemoTutor.new(@card, checked, params[:response_time]).recalculate
+    SuperMemoTutor.new(card: @card, review_status: checked, response_time: params[:response_time]).call
     redirect_to root_path
   end
 

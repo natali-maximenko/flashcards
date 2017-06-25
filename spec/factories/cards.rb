@@ -11,6 +11,10 @@ FactoryGirl.define do
     review_date { 2.days.ago }
     pack
     picture { File.new("#{Rails.root}/spec/support/fixtures/ciklon.jpg") }
+    review_count 0
+    fail_count 2
+    interval 0
+    efactor 2.5
   end
 
   factory :haben_card, class: Card do
