@@ -13,7 +13,7 @@ class SuperMemoTutor
     @time = response_time
   end
 
-  def call
+  def update_card
     update_counters
     up_review_date unless @status == INCORRECT_RESPONSE
     check_fails

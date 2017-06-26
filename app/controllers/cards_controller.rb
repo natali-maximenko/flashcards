@@ -55,7 +55,7 @@ class CardsController < ApplicationController
               end
     SuperMemoTutor.new(card: @card,
                        review_status: checked,
-                       response_time: params[:response_time]).call
+                       response_time: params[:response_time]).update_card
     redirect_to root_path
   end
 
