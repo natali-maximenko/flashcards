@@ -20,7 +20,9 @@ class User < ApplicationRecord
 
   def self.notify_cards_need_review
     User.joins(:cards).where('review_date <= ?', Time.now) do |user|
-      CardsMailer.pending_cards_notification(user).deliver_now
+      mailer = CardsMailer.pending_cards_notification(user)
+      mailer_response = mailer.deliver_now
+      mailgun_message_id = mailer_response.message_id
     end
   end
 end
