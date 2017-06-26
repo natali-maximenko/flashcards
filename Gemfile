@@ -23,12 +23,16 @@ gem 'simple_form'
 gem 'nokogiri'
 # auth
 gem 'sorcery'
+
 gem 'dotenv-rails'
 gem 'paperclip'
 gem 'aws-sdk'
 gem 'damerau-levenshtein'
 gem 'whenever', require: false
 gem 'http_accept_language'
+gem 'rollbar'
+gem 'newrelic_rpm'
+gem 'mailgun-ruby', '~>1.1.6'
 
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.2'
