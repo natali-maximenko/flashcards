@@ -77,7 +77,11 @@ private
   end
 
   def take_card
-    @card = current_user.current_pack_id.nil? ? current_user.cards.need_review.random.first
+    @next_card = random_card
+  end
+
+  def random_card
+    current_user.current_pack_id.nil? ? current_user.cards.need_review.random.first
             : current_user.current_pack.cards.need_review.random.first
   end
 
