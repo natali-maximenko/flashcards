@@ -51,7 +51,7 @@ class CardsController < ApplicationController
     tutor = SuperMemoTutor.new(card: @card, review_status: @checked,
                        response_time: params[:response_time])
     tutor.review!
-    @next_card = next_card if tutor.correct_status?(@checked)
+    take_card if tutor.correct_status?(@checked)
     respond_to do |format|
       format.js
     end
@@ -76,8 +76,8 @@ private
     @checked = SuperMemoTutor::INCORRECT_RESPONSE
   end
 
-  def next_card
-    current_user.current_pack_id.nil? ? current_user.cards.need_review.random.first
+  def take_card
+    @card = current_user.current_pack_id.nil? ? current_user.cards.need_review.random.first
             : current_user.current_pack.cards.need_review.random.first
   end
 
