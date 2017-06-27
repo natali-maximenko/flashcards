@@ -41,25 +41,48 @@ class CardsController < ApplicationController
   end
 
   def check
-    checked = if @card.original_text?(params[:user_text])
-                flash[:success] = t('.success')
-                SuperMemoTutor::PERFECT_RESPONSE
-              elsif @card.text_distance(params[:user_text]) == 1
-                flash[:warning] = t('.misprint',
-                                    original_text: @card.original_text,
-                                    user_text: params[:user_text])
-                SuperMemoTutor::CORRECT_RESPONSE
-              else
-                flash[:danger] = t('.fail')
-                SuperMemoTutor::INCORRECT_RESPONSE
-              end
-    SuperMemoTutor.new(card: @card,
-                       review_status: checked,
-                       response_time: params[:response_time]).review!
-    redirect_to root_path
+    @next_card = false
+    if @card.original_text?(params[:user_text])
+      successfull
+    elsif @card.text_distance(params[:user_text]) == 1
+      misprint
+    else
+      failed
+    end
+    tutor = SuperMemoTutor.new(card: @card, review_status: @checked,
+                       response_time: params[:response_time])
+    tutor.review!
+    next_card if tutor.correct_status?(@checked)
+    respond_to do |format|
+      format.js
+    end
   end
 
 private
+  def successfull
+    @msg = t('.success')
+    @flash_type = :success
+    @checked = SuperMemoTutor::PERFECT_RESPONSE
+  end
+
+  def misprint
+    @msg = t('.misprint', original_text: @card.original_text, user_text: params[:user_text])
+    @flash_type = :warning
+    @checked = SuperMemoTutor::CORRECT_RESPONSE
+  end
+
+  def failed
+    @msg = t('.fail')
+    @flash_type = :danger
+    @checked = SuperMemoTutor::INCORRECT_RESPONSE
+  end
+
+  def next_card
+    @next_card = true
+    @card = current_user.current_pack_id.nil? ? current_user.cards.need_review.random.first
+            : current_user.current_pack.cards.need_review.random.first
+  end
+
   def card_params
     params.require(:card).permit(:original_text, :translated_text, :review_date, :picture)
   end

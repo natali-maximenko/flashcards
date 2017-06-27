@@ -33,11 +33,12 @@ gem 'http_accept_language'
 gem 'rollbar'
 gem 'newrelic_rpm'
 gem 'mailgun-ruby', '~>1.1.6'
+gem 'jquery-rails'
 
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.2'
 # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
-gem 'turbolinks', '~> 5'
+# gem 'turbolinks', '~> 5'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.5'
 # Use Redis adapter to run Action Cable in production
@@ -53,7 +54,8 @@ group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   # Adds support for Capybara system testing and selenium driver
   gem 'capybara', '~> 2.13'
-  gem 'selenium-webdriver'
+  #gem 'selenium-webdriver'
+  gem 'poltergeist'
   gem 'rspec-rails', '~> 3.5'
   gem 'factory_girl_rails'
   gem 'timecop'
