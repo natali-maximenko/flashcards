@@ -41,7 +41,6 @@ class CardsController < ApplicationController
   end
 
   def check
-    @next_card = false
     if @card.original_text?(params[:user_text])
       successfull
     elsif @card.text_distance(params[:user_text]) == 1
@@ -78,8 +77,7 @@ private
   end
 
   def next_card
-    @next_card = true
-    @card = current_user.current_pack_id.nil? ? current_user.cards.need_review.random.first
+    @next_card = current_user.current_pack_id.nil? ? current_user.cards.need_review.random.first
             : current_user.current_pack.cards.need_review.random.first
   end
 
