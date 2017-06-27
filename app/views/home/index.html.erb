@@ -7,7 +7,7 @@
     <% if @card.nil? %>
     <h3><%= t '.no_cards' %></h3>
     <% else %>
-      <% if @card.picture.exists? %>
+      <% if @card.picture.present? %>
       <% image_tag @card.picture.url(:thumb), id: 'card_image' %>
       <% end %>
       <%= form_tag({controller: "cards", action: "check"}, remote: true, class: "form-inline") do %>

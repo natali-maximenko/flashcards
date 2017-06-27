@@ -4,8 +4,8 @@ $('#flash span').addClass("label label-<%= @flash_type %>");
 $('#user_text').val('');
 $('#response_time').val(0);
 
-<% if @next_card %>
-  $('#translated_text').text("<%= @next_card.translated_text %>")
-  $('#id').val("<%= @next_card.id %>");
-  $('#card_image').attr('src', "<%= @next_card.picture.url(:thumb)%>");
+<% if @checked != SuperMemoTutor::INCORRECT_RESPONSE %>
+  $('#translated_text').text("<%= @card.translated_text %>")
+  $('#id').val("<%= @card.id %>");
+  $('#card_image').attr('src', "<%= @card.picture.url(:thumb)%>");
 <% end %>

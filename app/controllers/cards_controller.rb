@@ -77,7 +77,7 @@ private
   end
 
   def take_card
-    @next_card = random_card
+    @card = random_card
   end
 
   def random_card
