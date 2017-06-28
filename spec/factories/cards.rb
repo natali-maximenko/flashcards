@@ -10,7 +10,6 @@ FactoryGirl.define do
     translated_text 'with'
     review_date { 2.days.ago }
     pack
-    picture { File.new("#{Rails.root}/spec/support/fixtures/ciklon.jpg") }
     review_count 0
     fail_count 2
     interval 0

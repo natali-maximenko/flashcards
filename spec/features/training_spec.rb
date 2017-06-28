@@ -1,35 +1,37 @@
 require 'rails_helper'
 
-describe 'card review page' do
+describe 'card review page', js: true do
   let!(:user) { create(:user_with_packs) }
 
-  before :each do
-    login('test@gmail.com', 'paSsWodD')
-    check_card(text)
+  before(:each) do
+    visit login_path
+    fill_in :email, with: 'test@gmail.com'
+    fill_in :password, with: 'paSsWodD'
+    click_button 'Login'
   end
 
-  context 'see home page with training program' do
-    let(:text) { '' }
-    it { expect(page).to have_content 'Первый в мире удобный менеджер флеш-карточек' }
+  it 'see home page with training program' do
+    visit root_path
+    expect(page).to have_content 'Первый в мире удобный менеджер флеш-карточек'
   end
 
-  context 'have cards to review' do
-    let(:text) { '' }
-    it { expect(page).not_to have_content 'Нечего повторять!' }
+  it 'have cards to review' do
+    visit root_path
+    expect(page).not_to have_content 'Нечего повторять!'
   end
 
-  context 'wrong word' do
-    let(:text) { 'blabla' }
-    it { expect(page).to have_content 'Ошибочка вышла, попробуй ещё раз.' }
+  it 'wrong word' do
+    check_card :blabla
+    expect(page).to have_css('#flash', text: 'Ошибочка вышла, попробуй ещё раз.')
   end
 
-  context 'correct word' do
-    let(:text) { 'mit' }
-    it { expect(page).to have_content 'Верно! Продолжай.' }
+  it 'correct word' do
+    check_card :mit
+    expect(page).to have_css('#flash', text: 'Верно! Продолжай.')
   end
 
-  context 'misprint' do
-    let(:text) { 'mti' }
-    it { expect(page).to have_content 'Опечатка. Правильно так: mit, а ввели mti.' }
+  it 'misprint' do
+    check_card :mti
+    expect(page).to have_css('#flash', text: 'Опечатка. Правильно так: mit, а ввели mti.')
   end
 end

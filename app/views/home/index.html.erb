@@ -7,18 +7,22 @@
     <% if @card.nil? %>
     <h3><%= t '.no_cards' %></h3>
     <% else %>
-      <%= image_tag @card.picture.url(:thumb) %>
-      <%= form_tag({controller: "cards", action: "check"}, class: "form-inline") do %>
+      <% if @card.picture.present? %>
+      <%= image_tag @card.picture.url(:thumb), id: 'card_image' %>
+      <% end %>
+      <%= form_tag({controller: "cards", action: "check"}, remote: true, class: "form-inline") do %>
         <%= hidden_field_tag(:id, @card.id) %>
         <%= hidden_field_tag(:response_time, 0) %>
         <%= text_field_tag(:user_text, '', class: 'form-control mb-2 mr-sm-2 mb-sm-0', placeholder: t('original_text')) %>
         <%= label_tag(:original_text, '=', class: 'mr-sm-2') %>
-        <span style="font-size: 22px;"><%= @card.translated_text %></span>
+        <span id="translated_text" style="font-size: 22px;"><%= @card.translated_text %></span>
         <%= submit_tag(t('.check'), class: 'btn btn-success') %>
       <% end %>
+      <div id="flash">
       <% flash.each do |name, msg| %>
         <h3><%= content_tag :span, msg, class: "label label-#{name}" %></h3>
       <% end %>
+      </div>
     <% end %>
   </div>
 </div>
