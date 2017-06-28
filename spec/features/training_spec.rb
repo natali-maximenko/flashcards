@@ -21,17 +21,17 @@ describe 'card review page', js: true do
   end
 
   it 'wrong word' do
-    check_card('blabla')
+    check_card :blabla
     expect(page).to have_css('#flash', text: 'Ошибочка вышла, попробуй ещё раз.')
   end
 
   it 'correct word' do
-    check_card('mit')
+    check_card :mit
     expect(page).to have_css('#flash', text: 'Верно! Продолжай.')
   end
 
   it 'misprint' do
-    check_card('mti')
+    check_card :mti
     expect(page).to have_css('#flash', text: 'Опечатка. Правильно так: mit, а ввели mti.')
   end
 end

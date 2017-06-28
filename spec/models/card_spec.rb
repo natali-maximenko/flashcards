@@ -31,7 +31,7 @@ RSpec.describe Card, type: :model do
   end
 
   describe 'picture' do
-    subject { create :card }
+    subject { create :card, picture: File.new("#{Rails.root}/spec/support/fixtures/ciklon.jpg")  }
 
     context 'card has picture' do
       it { is_expected.to have_attached_file(:picture) }
