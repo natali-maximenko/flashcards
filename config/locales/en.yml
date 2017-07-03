@@ -30,64 +30,81 @@ en:
   select: 'Select'
   email: 'Email'
   password: 'Password'
+  dashboard:
+    home:
+      index:
+        description: 'First in the worlds usable flashcards manager.'
+        no_cards: 'No cards to review'
+        check: 'Check it'
+    cards:
+      index:
+        header: 'Listing cards'
+        reviews: 'reviews'
+        fails: 'fails'
+        actions: 'actions'
+      new:
+        header: 'New card'
+      edit:
+        header: 'Editing card'
+      check:
+        success: 'Right! Go on.'
+        misprint: "Misprint. Original text was: %{original_text}, and you type %{user_text}."
+        fail: 'Errors happen try again.'
+    packs:
+      index:
+        header: 'My packs'
+        name: 'name'
+        cards: 'cards count'
+        current: 'current'
+        set_current: 'Set current pack'
+        add_pack: 'Add pack'
+      show:
+        header: 'Cards in pack'
+        card: 'card'
+        add_cards: 'Add cards in pack'
+        cards_list: 'Cards list'
+      new:
+        header: 'Add pack'
+      edit:
+        header: 'Edit pack'
+      form:
+        name: 'Title'
+      current:
+        pack: 'Current pack'
+    users:
+      edit:
+        header: 'Edit profile'
+      index:
+        header: 'Welcome!'
+      form:
+        password_confirmation: 'Password one more time'
+        signup: 'Sign up'
+        locale: 'Language'
+    user_sessions:
+      create:
+        success: 'Login successful'
+        fail: 'Login failed'
+      destroy:
+        msg: 'Logged out!'
   home:
-    index:
-      description: 'First in the worlds usable flashcards manager.'
-      no_cards: 'No cards to review'
-      check: 'Check it'
-  cards:
-    index:
-      header: 'Listing cards'
-      reviews: 'reviews'
-      fails: 'fails'
-      actions: 'actions'
-    new:
-      header: 'New card'
-    edit:
-      header: 'Editing card'
-    check:
-      success: 'Right! Go on.'
-      misprint: "Misprint. Original text was: %{original_text}, and you type %{user_text}."
-      fail: 'Errors happen try again.'
-  packs:
-    index:
-      header: 'My packs'
-      name: 'name'
-      cards: 'cards count'
-      current: 'current'
-      set_current: 'Set current pack'
-      add_pack: 'Add pack'
-    show:
-      header: 'Cards in pack'
-      card: 'card'
-      add_cards: 'Add cards in pack'
-      cards_list: 'Cards list'
-    new:
-      header: 'Add pack'
-    edit:
-      header: 'Edit pack'
-    form:
-      name: 'Title'
-    current:
-      pack: 'Current pack'
-  users:
-    new:
-      header: 'Sign up'
-    edit:
-      header: 'Edit profile'
-    index:
-      header: 'Welcome!'
-    form:
-      password_confirmation: 'Password one more time'
-      signup: 'Sign up'
-      locale: 'Language'
-  oauths:
-    callback:
-      success: "Logged in from %{provider}"
-      fail: "Failed to login from %{provider}!"
-  user_sessions:
-    create:
-      success: 'Login successful'
-      fail: 'Login failed'
-    destroy:
-      msg: 'Logged out!'
+    users:
+      new:
+        header: 'Sign up'
+      edit:
+        header: 'Edit profile'
+      index:
+        header: 'Welcome!'
+      form:
+        password_confirmation: 'Password one more time'
+        signup: 'Sign up'
+        locale: 'Language'
+    oauths:
+      callback:
+        success: "Logged in from %{provider}"
+        fail: "Failed to login from %{provider}!"
+    user_sessions:
+      create:
+        success: 'Login successful'
+        fail: 'Login failed'
+      destroy:
+        msg: 'Logged out!'

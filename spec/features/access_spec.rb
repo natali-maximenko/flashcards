@@ -3,7 +3,7 @@ require 'rails_helper'
 describe 'Accessing user' do
   let!(:user) { create(:user) }
   before :each do
-    visit root_path
+    visit review_path
   end
 
   it 'redirect to login' do

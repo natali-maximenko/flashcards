@@ -11,12 +11,12 @@ describe 'card review page', js: true do
   end
 
   it 'see home page with training program' do
-    visit root_path
+    visit review_path
     expect(page).to have_content 'Первый в мире удобный менеджер флеш-карточек'
   end
 
   it 'have cards to review' do
-    visit root_path
+    visit review_path
     expect(page).not_to have_content 'Нечего повторять!'
   end
 
