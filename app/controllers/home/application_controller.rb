@@ -1,5 +1,4 @@
 class Home::ApplicationController < ApplicationController
-
 private
 
   def locale
