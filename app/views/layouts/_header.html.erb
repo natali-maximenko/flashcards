@@ -23,7 +23,7 @@
           </ul>
           <ul class="nav navbar-nav navbar-right">
         <% if current_user %>
-          <li class="active"><a href="/"><%= t('review') %></a></li>
+          <li class="active"><%= link_to t('review'), :review %></li>
           <li><%= link_to t('my_packs'), packs_path %></li>
           <li><%= link_to t('add_pack'), new_pack_path %></li>
         <% else %>

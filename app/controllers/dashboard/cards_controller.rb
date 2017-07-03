@@ -1,4 +1,4 @@
-class CardsController < ApplicationController
+class Dashboard::CardsController < Dashboard::ApplicationController
   before_action :find_pack, only: [:new, :create, :edit, :update, :show, :destroy, :index]
   before_action :find_card, only: [:edit, :update, :show, :destroy, :check]
 

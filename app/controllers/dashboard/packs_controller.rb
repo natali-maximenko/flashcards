@@ -1,4 +1,4 @@
-class PacksController < ApplicationController
+class Dashboard::PacksController < Dashboard::ApplicationController
   before_action :find_pack, only: [:edit, :update, :show, :destroy]
 
   def index
