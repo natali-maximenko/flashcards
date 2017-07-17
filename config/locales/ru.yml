@@ -25,6 +25,8 @@ ru:
   translated_text: 'перевод'
   review_date: 'дата проверки'
   picture: 'картинка'
+  picture_url: 'ссылка на картинку'
+  remove_picture: 'удалить картинку'
   pack: 'колода'
   return_to_pack: "Вернуться в колоду: %{pack}"
   select: 'Выберите'

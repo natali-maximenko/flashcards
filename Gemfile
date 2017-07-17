@@ -25,7 +25,8 @@ gem 'nokogiri'
 gem 'sorcery'
 
 gem 'dotenv-rails'
-gem 'paperclip'
+gem 'carrierwave', '~> 1.0'
+gem 'mini_magick'
 gem 'aws-sdk'
 gem 'damerau-levenshtein'
 gem 'whenever', require: false
