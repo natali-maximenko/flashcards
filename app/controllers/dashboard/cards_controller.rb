@@ -86,7 +86,8 @@ private
   end
 
   def card_params
-    params.require(:card).permit(:original_text, :translated_text, :review_date, :picture, :remove_picture, :remote_picture_url)
+    params.require(:card).permit(:original_text, :translated_text, :review_date,
+                                 :picture, :remove_picture, :remote_picture_url)
   end
 
   def find_card

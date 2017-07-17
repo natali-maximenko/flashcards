@@ -20,7 +20,7 @@ ru:
   destroy: 'Удалить'
   back: 'Назад'
   actions: 'действия'
-  comfirm: 'Вы уверены?'
+  confirm: 'Вы уверены?'
   original_text: 'оригинал'
   translated_text: 'перевод'
   review_date: 'дата проверки'

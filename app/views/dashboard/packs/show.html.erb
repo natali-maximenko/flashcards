@@ -11,6 +11,7 @@
     <tr>
       <td><%= card.original_text %>-<%= card.translated_text %></td>
       <td>
+        <%= link_to t('show'), [@pack, card] , class: 'show_card'%>
         <%= link_to t('destroy'), pack_card_path(@pack, card),
               method: :delete,
               data: { confirm: t('confirm') } %>
