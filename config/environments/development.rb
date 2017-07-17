@@ -55,17 +55,16 @@ Rails.application.configure do
   # routes, locales, etc. This feature depends on the listen gem.
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
 
-  Paperclip.options[:command_path] = '/usr/bin/'
-  Paperclip::Attachment.default_options[:url] = ':s3_domain_url'
-  Paperclip::Attachment.default_options[:path] = '/:class/:attachment/:id_partition/:style/:filename'
-
-  config.paperclip_defaults = {
-    storage: :s3,
-    s3_credentials: {
-      bucket: ENV['S3_BUCKET_NAME'],
-      access_key_id: ENV['AWS_ACCESS_KEY_ID'],
-      secret_access_key: ENV['AWS_SECRET_ACCESS_KEY'],
-      s3_region: ENV['AWS_REGION'],
+  CarrierWave.configure do |config|
+    config.fog_provider = 'fog/aws'                        # required
+    config.fog_credentials = {
+      provider:              'AWS',                        # required
+      aws_access_key_id:     ENV['AWS_ACCESS_KEY_ID'],     # required
+      aws_secret_access_key: ENV['AWS_SECRET_ACCESS_KEY'], # required
+      region:                ENV['AWS_REGION'],            # optional, defaults to 'us-east-1'
     }
-  }
+    config.fog_directory  = ENV['S3_BUCKET_NAME']  # required
+    config.fog_public     = true                   # optional, defaults to true
+    config.fog_attributes = { cache_control: "public, max-age=#{365.day.to_i}" } # optional
+  end
 end

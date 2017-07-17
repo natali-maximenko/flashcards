@@ -25,6 +25,8 @@ en:
   translated_text: 'translated text'
   review_date: 'review date'
   picture: 'picture'
+  picture_url: 'remote picture url'
+  remove_picture: 'remove picture'
   pack: 'pack'
   return_to_pack: "Return to pack: %{pack}"
   select: 'Select'

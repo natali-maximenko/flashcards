@@ -18,7 +18,7 @@
       <td><%= card.original_text %></td>
       <td><%= card.translated_text %></td>
       <td><%= formated_date(card.review_date) %></td>
-      <td><%= image_tag card.picture.url(:thumb) %></td>
+      <td><%= image_tag card.picture.url(:thumb) if card.picture? %></td>
       <td><%= card.review_count %></td>
       <td><%= card.fail_count %></td>
       <td>
